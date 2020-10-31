@@ -1,0 +1,30 @@
+.chatRoomOption {
+  padding: 12px 25px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--light-gray);
+  cursor: pointer;
+}
+
+.chatRoomOption:hover {
+  background-color: var(--lighter-gray);
+}
+
+.chatRoomOption button.MuiIconButton-root {
+  padding: 8px !important;
+  color: var(--primary-color);
+  background-color: var(--lighter-gray);
+}
+
+.chatRoomOption .chatRoomOption__info {
+  margin-left: 1rem;
+}
+
+.chatRoomOption .chatRoomOption__info h3 {
+  font-weight: 600;
+  color: var(--font-color);
+}
+.chatRoomOption .chatRoomOption__info p {
+  font-weight: 300;
+  color: var(--gray);
+}

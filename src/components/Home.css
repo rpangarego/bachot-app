@@ -1,0 +1,45 @@
+.home {
+  flex: 1;
+
+  /* overflow: hidden; */
+}
+
+.home__header {
+  background-color: var(--primary-color);
+  height: 70px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home__header > img.logo {
+  height: 26px;
+  object-fit: contain;
+}
+
+.home__header .home__headerRight svg.MuiSvgIcon-root {
+  color: var(--white);
+}
+
+.home__userProfile {
+  padding: 12px 25px;
+  display: flex;
+  align-items: center;
+  border-bottom: 4px solid var(--light-gray);
+}
+
+.home__userProfile .userInfo {
+  margin-left: 1rem;
+}
+
+.home__userProfile .userInfo h3 {
+  font-weight: 600;
+  color: var(--font-color);
+}
+.home__userProfile .userInfo p {
+  font-weight: 300;
+  color: var(--gray);
+}

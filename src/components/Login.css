@@ -1,0 +1,39 @@
+.login {
+  /* border: 1px solid red; */
+  display: grid;
+  place-items: center;
+  text-align: center;
+  /* padding: 1rem 3rem; */
+  margin: auto;
+}
+
+.login > img {
+  max-width: 250px;
+  margin-bottom: 2.5rem;
+}
+
+.login img.illustration-image {
+  object-fit: contain;
+  width: 230px;
+  height: 230px;
+}
+
+.login p {
+  font-weight: 300;
+  font-size: 1.2rem;
+  color: var(--font-color);
+  margin-bottom: 2rem;
+}
+
+.login button {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  padding: 8px 2rem;
+  margin-top: 2rem;
+  border-radius: 50px;
+  font-weight: 400;
+}
+
+.login button:hover {
+  background-color: var(--secondary-hover-color);
+}
