@@ -3,7 +3,7 @@
   display: grid;
   place-items: center;
   text-align: center;
-  /* padding: 1rem 3rem; */
+  padding-top: 2rem;
   margin: auto;
 }
 
@@ -36,4 +36,10 @@
 
 .login button:hover {
   background-color: var(--secondary-hover-color);
+}
+
+.login p.login__developerInfo {
+  margin-top: 3rem;
+  font-size: 13px;
+  font-weight: 300;
 }

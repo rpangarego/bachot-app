@@ -4,6 +4,10 @@
   margin-bottom: 10px;
 }
 
+.message > a {
+  width: initial;
+}
+
 .message .MuiAvatar-root {
   margin-bottom: 20px;
 }

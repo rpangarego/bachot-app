@@ -1,8 +1,28 @@
 .app {
+  position: relative;
   border: 1px solid var(--primary-color);
   height: 99.99vh;
   width: 100vw;
   max-width: 460px;
-  box-sizing: border-box;
   display: flex;
+  overflow-y: scroll;
+  box-sizing: border-box;
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /*IE and Edge*/
+  scrollbar-width: none; /* Firefox*/
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+@media screen and (max-width: 460px) {
+  .app {
+    border: none;
+  }
 }

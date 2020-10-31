@@ -4,8 +4,15 @@ import { Avatar, IconButton } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import { useHistory } from "react-router-dom";
 
-const Header = ({ home }) => {
+const Header = ({ home, headerName, lastActivity }) => {
+  const history = useHistory();
+
+  const doSomething = () => {
+    console.log("Doing something magical");
+  };
+
   return (
     <div className={`header ${home && "home"}`}>
       {home ? (
@@ -15,21 +22,22 @@ const Header = ({ home }) => {
             <IconButton>
               <SearchIcon />
             </IconButton>
-            <IconButton>
+
+            <IconButton onClick={() => doSomething()}>
               <ExitToAppIcon />
             </IconButton>
           </div>
         </>
       ) : (
         <>
-          <IconButton>
+          <IconButton onClick={() => history.goBack()}>
             <ArrowBackIosIcon />
           </IconButton>
           <div className="header__info">
             <Avatar />
             <div className="header__infoDetails">
-              <h3>Room Name</h3>
-              <p>Last activity at...</p>
+              <h3>{headerName}</h3>
+              <p>{lastActivity}</p>
             </div>
           </div>
         </>

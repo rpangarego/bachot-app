@@ -1,0 +1,49 @@
+.userDetails {
+  flex: 1;
+}
+
+.userProfile {
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  margin-top: 70px;
+  color: var(--font-color);
+}
+
+.userProfile .MuiAvatar-root {
+  height: 80px;
+  width: 80px;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.userProfile h1 {
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.userProfile h3 {
+  font-size: 1.1rem;
+  color: var(--gray);
+}
+
+.userProfile h3,
+.userProfile p {
+  font-weight: 400;
+}
+
+.userProfile p {
+  /* font-size: 1.1rem; */
+  margin-top: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.userProfile .MuiButton-root {
+  padding: 8px 20px;
+  background-color: var(--gray);
+  color: white;
+}
+
+.userProfile .MuiButton-root:hover {
+  background-color: #a0a0a0;
+}

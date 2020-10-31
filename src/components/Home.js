@@ -2,9 +2,8 @@ import React from "react";
 import "./Home.css";
 import ChatRoomOption from "./ChatRoomOption";
 import { Avatar } from "@material-ui/core";
-// import SearchIcon from "@material-ui/icons/Search";
-// import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Header from "../parts/Header";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -12,7 +11,9 @@ const Home = () => {
       <Header home />
 
       <div className="home__userProfile">
-        <Avatar src="images/displayPic.png" alt="" />
+        <Link to={`/users/userId`}>
+          <Avatar src="images/displayPic.png" alt="" />
+        </Link>
         <div className="userInfo">
           <h3>Ronaldo Pangarego</h3>
           <p>rpangarego@mail.com</p>
@@ -21,6 +22,15 @@ const Home = () => {
 
       <div className="home__rooms">
         <ChatRoomOption createRoom />
+        <ChatRoomOption />
+        <ChatRoomOption />
+        <ChatRoomOption />
+        <ChatRoomOption />
+        <ChatRoomOption />
+        <ChatRoomOption />
+        <ChatRoomOption />
+        <ChatRoomOption />
+        <ChatRoomOption />
         <ChatRoomOption />
         <ChatRoomOption />
         <ChatRoomOption />

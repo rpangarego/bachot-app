@@ -2,10 +2,14 @@
   background-color: var(--primary-color);
   height: 70px;
   width: 100%;
+  max-width: 458px;
   box-sizing: border-box;
   padding: 1rem;
   display: flex;
   align-items: center;
+  position: fixed;
+  z-index: 9999;
+  box-sizing: border-box;
 }
 
 .header.home {

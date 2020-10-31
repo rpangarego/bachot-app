@@ -1,13 +1,17 @@
 .home {
   flex: 1;
-  /* overflow-y: scroll; */
 }
 
 .home__userProfile {
+  margin-top: 70px;
   padding: 12px 25px;
   display: flex;
   align-items: center;
   border-bottom: 4px solid var(--light-gray);
+}
+
+.home__userProfile > a {
+  width: initial;
 }
 
 .home__userProfile .userInfo {
@@ -18,7 +22,12 @@
   font-weight: 600;
   color: var(--font-color);
 }
+
 .home__userProfile .userInfo p {
   font-weight: 300;
   color: var(--gray);
+}
+
+.home__rooms {
+  /* overflow-y: scroll; */
 }

@@ -9,9 +9,21 @@ import { Button, IconButton } from "@material-ui/core";
 const Chat = () => {
   return (
     <div className="chat">
-      <Header />
+      <Header headerName="Room name" lastActivity="10/31/2020 8:00PM" />
 
       <div className="chat__body">
+        <Message
+          name="James"
+          message="=== 1st message ==="
+          timestamp="3:50PM"
+        />
+        <Message
+          name="Popcorn"
+          message="Wait! I go things to do 1st"
+          timestamp="3:54PM"
+        />
+        <Message receiver message="Okay. I'm on my way" timestamp="3:58PM" />
+        <Message name="James" message="See you there!" timestamp="3:58PM" />
         <Message
           name="James"
           message="Idk.. Should we go now?"
@@ -24,6 +36,22 @@ const Chat = () => {
         />
         <Message receiver message="Okay. I'm on my way" timestamp="3:58PM" />
         <Message name="James" message="See you there!" timestamp="3:58PM" />
+        <Message
+          name="James"
+          message="Idk.. Should we go now?"
+          timestamp="3:50PM"
+        />
+        <Message
+          name="Popcorn"
+          message="Wait! I go things to do 1st"
+          timestamp="3:54PM"
+        />
+        <Message receiver message="Okay. I'm on my way" timestamp="3:58PM" />
+        <Message
+          name="James"
+          message="=== LAST MESSAGE ==="
+          timestamp="3:58PM"
+        />
       </div>
 
       {/* chat form */}

@@ -4,15 +4,21 @@
 }
 
 .chat__body {
+  position: relative;
+  margin-top: 70px;
+  margin-bottom: 50px;
   padding: 1rem;
+  padding-top: 12px;
+  overflow-y: auto;
 }
 
 .chat__form {
-  position: absolute;
+  position: fixed;
   display: flex;
   height: 60px;
   width: 100%;
-  left: 0;
+  max-width: 458px;
+  left: initial;
   bottom: 0;
   background-color: var(--lighter-gray);
   align-items: center;

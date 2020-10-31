@@ -1,11 +1,16 @@
 import React from "react";
 import "./Message.css";
 import { Avatar } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
-const Message = ({ receiver, name, message, timestamp }) => {
+const Message = ({ receiver, name, message, timestamp, photoURL, userId }) => {
   return (
     <div className="message">
-      {!receiver && <Avatar />}
+      {!receiver && (
+        <Link to={`/users/${userId}`}>
+          <Avatar src={photoURL} />
+        </Link>
+      )}
 
       <div className={`messageDetails ${receiver && "messageReceiver"}`}>
         {!receiver && <h3 className="message__name">{name}</h3>}
