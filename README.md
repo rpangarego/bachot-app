@@ -1,4 +1,5 @@
-# Getting Started with Create React App
+# Bachot App with ReactJS and Firebase
+This is a chat app. I build this app with ReactJS as the Frontend side and Firebase as the Backend and database also.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
