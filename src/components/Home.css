@@ -1,27 +1,6 @@
 .home {
   flex: 1;
-
-  /* overflow: hidden; */
-}
-
-.home__header {
-  background-color: var(--primary-color);
-  height: 70px;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.home__header > img.logo {
-  height: 26px;
-  object-fit: contain;
-}
-
-.home__header .home__headerRight svg.MuiSvgIcon-root {
-  color: var(--white);
+  /* overflow-y: scroll; */
 }
 
 .home__userProfile {

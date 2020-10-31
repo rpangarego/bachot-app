@@ -1,0 +1,45 @@
+.chat {
+  flex: 1;
+  position: relative;
+}
+
+.chat__body {
+  padding: 1rem;
+}
+
+.chat__form {
+  position: absolute;
+  display: flex;
+  height: 60px;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  background-color: var(--lighter-gray);
+  align-items: center;
+  justify-content: center;
+}
+
+.chat__form form {
+  background-color: var(--white);
+  display: flex;
+  height: 40px;
+  width: 95%;
+  border-radius: 50px;
+  justify-content: space-between;
+}
+
+.chat__form form input {
+  flex: 1;
+  outline: none;
+  border: none;
+  font-size: 0.85rem;
+}
+
+.chat__form form .MuiButtonBase-root {
+  color: var(--primary-color);
+}
+
+.chat__form form .MuiButtonBase-root:hover {
+  background-color: var(--white);
+  color: var(--secondary-color);
+}

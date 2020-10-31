@@ -1,24 +1,15 @@
 import React from "react";
 import "./Home.css";
 import ChatRoomOption from "./ChatRoomOption";
-import { Avatar, IconButton } from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { Avatar } from "@material-ui/core";
+// import SearchIcon from "@material-ui/icons/Search";
+// import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import Header from "../parts/Header";
 
 const Home = () => {
   return (
     <div className="home">
-      <div className="home__header">
-        <img src="images/bachot-logo-white.png" alt="" className="logo" />
-        <div className="home__headerRight">
-          <IconButton>
-            <SearchIcon />
-          </IconButton>
-          <IconButton>
-            <ExitToAppIcon />
-          </IconButton>
-        </div>
-      </div>
+      <Header home />
 
       <div className="home__userProfile">
         <Avatar src="images/displayPic.png" alt="" />

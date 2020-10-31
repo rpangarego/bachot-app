@@ -1,0 +1,40 @@
+.header {
+  background-color: var(--primary-color);
+  height: 70px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.header.home {
+  justify-content: space-between;
+}
+
+.header > img.logo {
+  height: 24px;
+  object-fit: contain;
+}
+
+.header svg.MuiSvgIcon-root {
+  color: var(--white);
+}
+
+.header__info {
+  display: flex;
+  align-items: center;
+}
+
+.header__infoDetails {
+  margin-left: 1rem;
+  color: var(--white);
+}
+
+.header__infoDetails h3 {
+  font-weight: 600;
+}
+
+.header__infoDetails p {
+  font-weight: 300;
+}
