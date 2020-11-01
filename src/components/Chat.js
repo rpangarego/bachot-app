@@ -53,6 +53,7 @@ const Chat = () => {
     if (inputMessage) {
       db.collection("rooms").doc(roomId).collection("messages").add({
         email: user.email,
+        uid: user.uid,
         message: inputMessage,
         name: user.displayName,
         photoURL: user.photoURL,
@@ -71,10 +72,12 @@ const Chat = () => {
         {messages.length ? (
           messages.map((message, index) => (
             <Message
-              receiver={user.email === message.email ? "true" : "false"}
+              receiver={user.email === message.email ? true : false}
               roomId={roomId}
+              uid={message?.uid}
               messageId={messagesId[index]}
               name={message.name}
+              email={message.email}
               message={message.message}
               photoURL={message.photoURL}
               timestamp={new Date(message.timestamp?.toDate()).toLocaleString()}

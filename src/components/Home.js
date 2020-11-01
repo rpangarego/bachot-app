@@ -12,6 +12,20 @@ const Home = () => {
   // eslint-disable-next-line no-unused-vars
   const [{ user }, dispatch] = useDataLayerValue();
 
+  useEffect(() => {
+    db.collection("users")
+      .doc(user.uid)
+      .get()
+      .then((snapshot) =>
+        db.collection("users").doc(user.uid).set({
+          displayName: user.displayName,
+          email: user.email,
+          lastTimeSignInTime: user.lastTimeSignInTime,
+          photoURL: user.photoURL
+        })
+      );
+  });
+
   // Scroll to top element
   const homeTopElement = useRef(null);
   const scrollToTop = () => {
@@ -35,7 +49,6 @@ const Home = () => {
       ? setStateStatus(["data exists"])
       : setStateStatus(["no data"]);
 
-    console.log(stateStatus);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -45,7 +58,7 @@ const Home = () => {
       <Header home />
 
       <div className="home__userProfile">
-        <Link to={`/users/userId`}>
+        <Link to={`/users/${user.uid}`}>
           <Avatar src={user.photoURL} alt="" />
         </Link>
         <div className="userInfo">

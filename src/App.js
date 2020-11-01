@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login";
@@ -10,8 +10,6 @@ import { useDataLayerValue } from "./DataLayer";
 
 function App() {
   const [{ user }] = useDataLayerValue();
-
-  // useEffect(() => {});
 
   return (
     <div className="app">

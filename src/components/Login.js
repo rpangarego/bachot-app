@@ -6,7 +6,7 @@ import { useDataLayerValue } from "../DataLayer";
 
 const Login = () => {
   // eslint-disable-next-line no-unused-vars
-  const [{}, dispatch] = useDataLayerValue();
+  const [{ user }, dispatch] = useDataLayerValue();
 
   const signIn = () => {
     auth

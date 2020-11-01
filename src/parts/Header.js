@@ -9,6 +9,7 @@ import db from "../firebase";
 import { useDataLayerValue } from "../DataLayer";
 
 const Header = ({ home, chatRoom, headerName, lastActivity, photoURL }) => {
+  // eslint-disable-next-line no-empty-pattern
   const [{}, dispatch] = useDataLayerValue();
   const history = useHistory();
   const { roomId } = useParams();
