@@ -28,6 +28,11 @@
   color: var(--gray);
 }
 
-.home__rooms {
-  /* overflow-y: scroll; */
+.home__rooms .MuiCircularProgress-root {
+  margin-top: 4rem;
+  margin-left: 45%;
+}
+
+.home__rooms h3.no-data {
+  text-align: center;
 }

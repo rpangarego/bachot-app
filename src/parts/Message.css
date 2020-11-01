@@ -35,12 +35,15 @@
   font-size: 1rem;
   background-color: var(--lighter-gray);
   color: var(--font-color);
-  border-radius: 10px;
+  border-radius: 12px;
+  border-bottom-left-radius: 0;
 }
 
 .messageDetails.messageReceiver p.message__text {
   background-color: var(--secondary-color);
   color: var(--white);
+  border-radius: 12px;
+  border-bottom-right-radius: 0;
 }
 
 .messageDetails h6.message__time {
