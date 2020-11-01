@@ -12,6 +12,14 @@
   overflow-y: auto;
 }
 
+.chat__body > h5 {
+  font-weight: 400;
+  padding: 8px 14px;
+  text-align: center;
+  background-color: var(--lighter-gray);
+  border-radius: 20px;
+}
+
 .chat__form {
   position: fixed;
   display: flex;

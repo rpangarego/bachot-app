@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login";
@@ -6,12 +6,16 @@ import Home from "./components/Home";
 import Chat from "./components/Chat";
 import UserDetails from "./components/UserDetails";
 
+import { useDataLayerValue } from "./DataLayer";
+
 function App() {
-  const login = true; //REMOVE THIS AFTER DEVELOPMENT
+  const [{ user }] = useDataLayerValue();
+
+  // useEffect(() => {});
 
   return (
     <div className="app">
-      {!login ? (
+      {!user ? (
         <Login />
       ) : (
         <Router>

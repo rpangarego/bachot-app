@@ -17,9 +17,8 @@ const ChatRoomOption = ({
 
   const createNewRoom = () => {
     const roomName = prompt("Enter room name:");
-    const roomPassword = prompt("Enter room password:");
 
-    if (roomName && roomPassword) {
+    if (roomName) {
       // background avatar colors
       const colors = [
         "F4A261",
@@ -43,7 +42,6 @@ const ChatRoomOption = ({
       db.collection("rooms")
         .add({
           roomName,
-          roomPassword,
           photoURL,
           created: {
             email: "useremail@mail.com",
@@ -53,8 +51,6 @@ const ChatRoomOption = ({
         })
         .then((docRef) => history.push(`/rooms/${docRef.id}`))
         .catch((error) => alert(error.message));
-    } else {
-      alert("Create room failed");
     }
   };
 

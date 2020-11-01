@@ -6,8 +6,12 @@ import { Avatar } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import db from "../firebase";
+import { useDataLayerValue } from "../DataLayer";
 
 const Home = () => {
+  // eslint-disable-next-line no-unused-vars
+  const [{ user }, dispatch] = useDataLayerValue();
+
   // Scroll to top element
   const homeTopElement = useRef(null);
   const scrollToTop = () => {
@@ -42,11 +46,11 @@ const Home = () => {
 
       <div className="home__userProfile">
         <Link to={`/users/userId`}>
-          <Avatar src="images/displayPic.png" alt="" />
+          <Avatar src={user.photoURL} alt="" />
         </Link>
         <div className="userInfo">
-          <h3>Ronaldo Pangarego</h3>
-          <p>rpangarego@mail.com</p>
+          <h3>{user.displayName}</h3>
+          <p>{user.email}</p>
         </div>
       </div>
 
