@@ -5,6 +5,7 @@ import "./ChatRoomOption.css";
 import { Link, useHistory } from "react-router-dom";
 import firebase from "firebase";
 import db from "../firebase";
+import {useDataLayerValue} from '../DataLayer'
 
 const ChatRoomOption = ({
   createRoom,
@@ -13,6 +14,8 @@ const ChatRoomOption = ({
   photoURL,
   createDetails
 }) => {
+  // eslint-disable-next-line no-unused-vars
+  const [{user}, dispatch]= useDataLayerValue()
   const history = useHistory();
 
   const createNewRoom = () => {
@@ -44,8 +47,8 @@ const ChatRoomOption = ({
           roomName,
           photoURL,
           created: {
-            email: "useremail@mail.com",
-            name: "username",
+            email: user.email,
+            name: user.displayName,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
           }
         })

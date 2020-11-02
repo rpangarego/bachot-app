@@ -22,10 +22,11 @@ const UserDetails = () => {
 
   return (
     <div className="userDetails">
-      <Header headerName={userDetails.displayName} />
+      <Header headerName={userDetails.displayName} photoURL={userDetails.photoURL} />
 
       <div className="userProfile">
         <Avatar src={userDetails.photoURL} />
+
         <h1>{userDetails.displayName}</h1>
         <h3>{userDetails.email}</h3>
         <p>Last activity at <br/><b>{userDetails.lastSignInTime}</b></p>

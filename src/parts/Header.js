@@ -1,7 +1,6 @@
 import React from "react";
 import "./Header.css";
 import { Avatar, IconButton } from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { useHistory, useParams } from "react-router-dom";
@@ -62,10 +61,6 @@ const Header = ({ home, chatRoom, headerName, lastActivity, photoURL }) => {
         <>
           <img src="images/bachot-logo-white.png" alt="" className="logo" />
           <div className="headerRight">
-            <IconButton>
-              <SearchIcon />
-            </IconButton>
-
             <IconButton onClick={signOutUser}>
               <ExitToAppIcon />
             </IconButton>
