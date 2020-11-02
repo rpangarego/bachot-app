@@ -12,19 +12,17 @@ const Home = () => {
   // eslint-disable-next-line no-unused-vars
   const [{ user }, dispatch] = useDataLayerValue();
 
-  useEffect(() => {
-    db.collection("users")
-      .doc(user.uid)
-      .get()
-      .then((snapshot) =>
-        db.collection("users").doc(user.uid).set({
-          displayName: user.displayName,
-          email: user.email,
-          lastTimeSignInTime: user.lastTimeSignInTime,
-          photoURL: user.photoURL
-        })
-      );
-  });
+  useEffect(() => {  
+        db.collection('users').doc(user.uid).set({
+          displayName:user.displayName,
+          email:user.email,
+          lastSignInTime:user.metadata?.lastSignInTime,
+          photoURL:user.photoURL
+        }
+        )
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
 
   // Scroll to top element
   const homeTopElement = useRef(null);

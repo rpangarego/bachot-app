@@ -17,19 +17,18 @@ const UserDetails = () => {
       .then((snapshot) => {
         setUserDetails(snapshot.data());
       });
-  });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
 
   return (
     <div className="userDetails">
       <Header headerName={userDetails.displayName} />
 
       <div className="userProfile">
-        <Avatar />
+        <Avatar src={userDetails.photoURL} />
         <h1>{userDetails.displayName}</h1>
         <h3>{userDetails.email}</h3>
-        <p>{`Last activity at ${new Date(
-          userDetails.lastTimeSignInTime?.toDate()
-        ).toLocaleString()}`}</p>
+        <p>Last activity at <br/><b>{userDetails.lastSignInTime}</b></p>
 
         <Button onClick={() => history.goBack()}>Back</Button>
       </div>

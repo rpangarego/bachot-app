@@ -74,7 +74,7 @@ const Chat = () => {
             <Message
               receiver={user.email === message.email ? true : false}
               roomId={roomId}
-              uid={message?.uid}
+              uid={message.uid}
               messageId={messagesId[index]}
               name={message.name}
               email={message.email}

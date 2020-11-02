@@ -22,11 +22,11 @@ const Login = () => {
 
   return (
     <div className="login">
-      <img src="images/bachot-logo.png" alt="Bachot app!" />
+      <img src="/images/bachot-logo.png" alt="Bachot app!" />
 
       <div>
         <img
-          src="illustration-image.png"
+          src="/images/illustration-image.PNG"
           alt=""
           className="illustration-image"
         />

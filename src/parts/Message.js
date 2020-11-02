@@ -10,7 +10,7 @@ const Message = ({
   message,
   timestamp,
   photoURL,
-  userId,
+  uid,
   messageId,
   roomId
 }) => {
@@ -30,7 +30,7 @@ const Message = ({
       onDoubleClick={() => deleteMessage(roomId, messageId)}
     >
       {!receiver && (
-        <Link to={`/users/${userId}`}>
+        <Link to={`/users/${uid}`}>
           <Avatar src={photoURL} />
         </Link>
       )}
