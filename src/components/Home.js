@@ -9,20 +9,18 @@ import db from "../firebase";
 import { useDataLayerValue } from "../DataLayer";
 
 const Home = () => {
-  // eslint-disable-next-line no-unused-vars
-  const [{ user }, dispatch] = useDataLayerValue();
+  const [{ user }] = useDataLayerValue();
 
-  useEffect(() => {  
-        db.collection('users').doc(user.uid).set({
-          displayName:user.displayName,
-          email:user.email,
-          lastSignInTime:user.metadata?.lastSignInTime,
-          photoURL:user.photoURL
-        }
-        )
+  useEffect(() => {
+    db.collection("users").doc(user.uid).set({
+      displayName: user.displayName,
+      email: user.email,
+      lastSignInTime: user.lastSignInTime,
+      photoURL: user.photoURL,
+    });
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Scroll to top element
   const homeTopElement = useRef(null);
@@ -41,14 +39,14 @@ const Home = () => {
       .onSnapshot((snapshot) => {
         setRooms(snapshot.docs.map((doc) => doc.data()));
         setRoomsId(snapshot.docs.map((doc) => doc.id));
+
+        rooms.length
+          ? setStateStatus("data exists")
+          : setStateStatus("no data");
       });
 
-    rooms.length
-      ? setStateStatus(["data exists"])
-      : setStateStatus(["no data"]);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  });
 
   return (
     <div className="home">
@@ -66,20 +64,18 @@ const Home = () => {
       </div>
 
       <div className="home__rooms">
-        <ChatRoomOption createRoom />
+        <ChatRoomOption createRoom key={99999999} />
 
         {stateStatus === "fetch data" ? (
           <CircularProgress />
         ) : stateStatus === "no data" ? (
-          <h3 className="no-data">No room yet.</h3>
+          <h3 className="no-data">No room yet</h3>
         ) : (
           rooms.map((room, index) => (
             <ChatRoomOption
               key={roomsId[index]}
               roomId={roomsId[index]}
-              roomName={room.roomName}
-              photoURL={room.photoURL}
-              createDetails={room.created}
+              room={room}
             />
           ))
         )}

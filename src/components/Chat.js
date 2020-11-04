@@ -1,18 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import "./Chat.css";
 import Header from "../parts/Header";
 import Message from "../parts/Message";
 import SendIcon from "@material-ui/icons/Send";
-import AttachFileIcon from "@material-ui/icons/AttachFile";
-import { Button, IconButton } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import firebase from "firebase";
 import db from "../firebase";
 import { useDataLayerValue } from "../DataLayer";
 
 const Chat = () => {
   // eslint-disable-next-line no-unused-vars
-  const [{ user }, dispatch] = useDataLayerValue();
+  const history = useHistory();
+  // eslint-disable-next-line no-unused-vars
+  const [{ user, accessRoomId }, dispatch] = useDataLayerValue();
 
   // auto scroll to bottom
   const messagesEndRef = useRef(null);
@@ -29,12 +30,21 @@ const Chat = () => {
   const { roomId } = useParams();
 
   useEffect(() => {
+    // get room info
     db.collection("rooms")
       .doc(roomId)
-      .onSnapshot((snapshot) => {
-        setRoom(snapshot.data());
+      .get()
+      .then((result) => {
+        setRoom(result.data());
+
+        // set accessRoomId
+        dispatch({
+          type: "SET_ACCESSROOMID",
+          accessRoomId: roomId,
+        });
       });
 
+    // get room messages
     db.collection("rooms")
       .doc(roomId)
       .collection("messages")
@@ -57,7 +67,7 @@ const Chat = () => {
         message: inputMessage,
         name: user.displayName,
         photoURL: user.photoURL,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       });
     }
 
@@ -66,7 +76,7 @@ const Chat = () => {
 
   return (
     <div className="chat">
-      <Header chatRoom headerName={room.roomName} photoURL={room.photoURL} />
+      <Header chatRoom headerName={room.name} photoURL={room.photoURL} />
 
       <div className="chat__body">
         {messages.length ? (
@@ -86,16 +96,12 @@ const Chat = () => {
         ) : (
           <h5>Tips: double tap message to delete it.</h5>
         )}
-        {/* <Message receiver message="Okay. I'm on my way" timestamp="3:58PM" /> */}
-        <div ref={messagesEndRef}></div>
       </div>
+      <div ref={messagesEndRef}></div>
 
       {/* chat form */}
       <div className="chat__form">
         <form>
-          <IconButton>
-            <AttachFileIcon />
-          </IconButton>
           <input
             type="text"
             className="chat__input"

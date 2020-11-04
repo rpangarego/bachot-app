@@ -1,5 +1,6 @@
 export const initialState = {
-  user: null
+  user: null,
+  accessRoomId: "",
 };
 
 const reducer = (state, action) => {
@@ -9,7 +10,12 @@ const reducer = (state, action) => {
     case "SET_USER":
       return {
         ...state,
-        user: action.user
+        user: action.user,
+      };
+    case "SET_ACCESSROOMID":
+      return {
+        ...state,
+        accessRoomId: action.accessRoomId,
       };
 
     default:

@@ -1,12 +1,17 @@
 .app {
   position: relative;
   border: 1px solid var(--primary-color);
-  height: 99.99vh;
+  height: 90vh;
   width: 100vw;
-  max-width: 460px;
+  max-width: 420px;
+  max-height: 740px;
   display: flex;
   overflow-y: scroll;
   box-sizing: border-box;
+  color: var(--font-color);
+
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
 
   /* Hide scrollbar for IE, Edge and Firefox */
   -ms-overflow-style: none; /*IE and Edge*/
@@ -23,6 +28,9 @@ a {
 
 @media screen and (max-width: 460px) {
   .app {
+    height: 100vh;
     border: none;
+    border-radius: 0;
+    box-shadow: none;
   }
 }

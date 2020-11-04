@@ -24,6 +24,7 @@
 
 .chatRoomOption .chatRoomOption__info {
   margin-left: 1rem;
+  width: 100%;
 }
 
 .chatRoomOption .chatRoomOption__info h3 {

@@ -1,5 +1,6 @@
 .home {
   flex: 1;
+  position: relative;
 }
 
 .home__userProfile {
@@ -35,4 +36,7 @@
 
 .home__rooms h3.no-data {
   text-align: center;
+  color: var(--font-color);
+  padding-top: 2rem;
+  font-weight: 400;
 }

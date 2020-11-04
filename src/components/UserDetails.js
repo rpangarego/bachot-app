@@ -29,8 +29,8 @@ const UserDetails = () => {
 
         <h1>{userDetails.displayName}</h1>
         <h3>{userDetails.email}</h3>
-        <p>Last activity at <br/><b>{userDetails.lastSignInTime}</b></p>
-
+        <p>Last activity at <br/><b>{new Date(userDetails.lastSignInTime).toLocaleString()}</b></p>
+    
         <Button onClick={() => history.goBack()}>Back</Button>
       </div>
     </div>

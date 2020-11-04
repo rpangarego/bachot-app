@@ -14,7 +14,13 @@ const Login = () => {
       .then((result) => {
         dispatch({
           type: "SET_USER",
-          user: result.user
+          user: {
+            displayName: result.user.displayName,
+            email: result.user.email,
+            lastSignInTime: result.user.metadata.lastSignInTime,
+            photoURL: result.user.photoURL,
+            uid: result.user.uid,
+          },
         });
       })
       .catch((error) => alert(error.message));

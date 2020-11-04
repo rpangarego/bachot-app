@@ -47,6 +47,8 @@
   outline: none;
   border: none;
   font-size: 0.85rem;
+  padding-left: 15px;
+  border-radius: 50px;
 }
 
 .chat__form form .MuiButtonBase-root {

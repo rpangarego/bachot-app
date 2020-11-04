@@ -3,6 +3,7 @@ import "./Message.css";
 import { Avatar } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import db from "../firebase";
+import { useDataLayerValue } from "../DataLayer";
 
 const Message = ({
   receiver,
@@ -12,10 +13,12 @@ const Message = ({
   photoURL,
   uid,
   messageId,
-  roomId
+  roomId,
 }) => {
-  const deleteMessage = (roomId, messageId) => {
-    if (messageId) {
+  const [{ user }] = useDataLayerValue();
+  const deleteMessage = (roomId, messageId, uid) => {
+    // delete message when that user is the one who send the message
+    if (uid === user.uid) {
       db.collection("rooms")
         .doc(roomId)
         .collection("messages")
@@ -27,7 +30,7 @@ const Message = ({
   return (
     <div
       className="message"
-      onDoubleClick={() => deleteMessage(roomId, messageId)}
+      onDoubleClick={() => deleteMessage(roomId, messageId, uid)}
     >
       {!receiver && (
         <Link to={`/users/${uid}`}>

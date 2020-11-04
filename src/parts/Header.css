@@ -2,7 +2,7 @@
   background-color: var(--primary-color);
   height: 70px;
   width: 100%;
-  max-width: 458px;
+  max-width: 419px;
   box-sizing: border-box;
   padding: 1rem;
   display: flex;
@@ -10,6 +10,9 @@
   position: fixed;
   z-index: 9999;
   box-sizing: border-box;
+
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 .header.home {
@@ -41,4 +44,10 @@
 
 .header__infoDetails p {
   font-weight: 300;
+}
+
+@media screen and (max-width: 460px) {
+  .header {
+    border-radius: 0;
+  }
 }

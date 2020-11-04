@@ -2,99 +2,73 @@ import React from "react";
 import { Avatar, IconButton } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import "./ChatRoomOption.css";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import firebase from "firebase";
 import db from "../firebase";
-import {useDataLayerValue} from '../DataLayer'
+import { useDataLayerValue } from "../DataLayer";
+import { getRandomColor } from "../utils";
 
-const ChatRoomOption = ({
-  createRoom,
-  roomId,
-  roomName,
-  photoURL,
-  createDetails
-}) => {
+const ChatRoomOption = ({ createRoom, roomId, room }) => {
   // eslint-disable-next-line no-unused-vars
-  const [{user}, dispatch]= useDataLayerValue()
+  const [{ user, accessRoomId }, dispatch] = useDataLayerValue();
   const history = useHistory();
 
   const createNewRoom = () => {
-    const roomName = prompt("Enter room name:");
+    const roomName = prompt("Set room name:");
+    const roomPassword = prompt("Set room password:");
 
-    if (roomName) {
+    if (roomName && roomPassword) {
       // background avatar colors
-      const colors = [
-        "F4A261",
-        "2A9D8F",
-        "0096C7",
-        "023E8A",
-        "FCA311",
-        "6D6875",
-        "E5989B",
-        "FAA307",
-        "6930C3",
-        "5390D9"
-      ];
-      const setColor = colors[Math.floor(Math.random() * colors.length - 1)];
+      const setBgColor = getRandomColor();
       const _roomName = roomName.toUpperCase().split(" ");
-      const _additionalParameter = _roomName < 2 && "&length=1";
+      const _additionalParameter = _roomName.length < 2 && "&length=1";
       const photoURL = `https://avatar.oxro.io/avatar.svg?name=${_roomName.join(
         "+"
-      )}&background=${setColor}&color=fff&bold=true${_additionalParameter}`;
+      )}&background=${setBgColor}&color=fff&bold=true${_additionalParameter}`;
 
       db.collection("rooms")
         .add({
-          roomName,
+          name: roomName,
+          password: roomPassword,
           photoURL,
           created: {
             email: user.email,
             name: user.displayName,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp()
-          }
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          },
         })
-        .then((docRef) => history.push(`/rooms/${docRef.id}`))
+        .then((result) => {
+          history.push(`/rooms/${result.id}`);
+        })
         .catch((error) => alert(error.message));
     }
   };
 
-  const deleteRoom = (roomId, roomName) => {
-    const somekindLikeCaptha = [
-      "dieticat",
-      "abstep",
-      "supress",
-      "atious",
-      "beauction",
-      "signom",
-      "brigat",
-      "grilled",
-      "puloby",
-      "diumed",
-      "dithorit",
-      "gention"
-    ];
-    const confirmKey =
-      somekindLikeCaptha[
-        Math.floor(Math.random() * somekindLikeCaptha.length - 1)
-      ];
-    const confirmDelete = prompt(
-      `Type "${confirmKey}" to delete ${roomName} room`
-    );
-
-    if (confirmDelete === confirmKey) {
-      db.collection("rooms").doc(roomId).delete();
-      alert(`${roomName} room deleted!`);
-    } else {
-      alert(`Fail to delete ${roomName} room! What you type is not match.`);
+  const enterRoom = () => {
+    // check if user has access to that room before
+    if (accessRoomId !== roomId) {
+      const _roomPassword = prompt("Enter room password:");
+      if (room.password !== _roomPassword) {
+        alert("Room password incorrect!");
+        return false;
+      }
     }
+    setRoomAccessAndRedirect();
+  };
+
+  const setRoomAccessAndRedirect = () => {
+    dispatch({
+      type: "SET_ACCESSROOMID",
+      accessRoomId: roomId,
+    });
+
+    history.push(`/rooms/${roomId}`);
   };
 
   return (
-    <div
-      className="chatRoomOption"
-      onDoubleClick={() => deleteRoom(roomId, roomName)}
-    >
+    <div className="chatRoomOption">
       {createRoom ? (
-        <div onClick={() => createNewRoom()}>
+        <div onClick={createNewRoom}>
           <IconButton>
             <AddIcon />
           </IconButton>
@@ -103,13 +77,13 @@ const ChatRoomOption = ({
           </div>
         </div>
       ) : (
-        <Link to={`/rooms/${roomId}`}>
-          <Avatar src={photoURL} />
+        <div onClick={enterRoom}>
+          <Avatar src={room.photoURL} />
           <div className="chatRoomOption__info">
-            <h3>{roomName}</h3>
-            <p>{`Created by ${createDetails.name}`}</p>
+            <h3>{room.name}</h3>
+            <p>{`Created by ${room.created.name}`}</p>
           </div>
-        </Link>
+        </div>
       )}
     </div>
   );

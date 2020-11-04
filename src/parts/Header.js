@@ -6,6 +6,7 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { useHistory, useParams } from "react-router-dom";
 import db from "../firebase";
 import { useDataLayerValue } from "../DataLayer";
+import { getGibberishWord } from "../utils";
 
 const Header = ({ home, chatRoom, headerName, lastActivity, photoURL }) => {
   // eslint-disable-next-line no-empty-pattern
@@ -16,29 +17,12 @@ const Header = ({ home, chatRoom, headerName, lastActivity, photoURL }) => {
   const signOutUser = () => {
     dispatch({
       type: "SET_USER",
-      user: ""
+      user: "",
     });
   };
 
   const deleteRoom = (roomId, headerName) => {
-    const somekindLikeCaptha = [
-      "dieticat",
-      "abstep",
-      "supress",
-      "atious",
-      "beauction",
-      "signom",
-      "brigat",
-      "grilled",
-      "puloby",
-      "diumed",
-      "dithorit",
-      "gention"
-    ];
-    const confirmKey =
-      somekindLikeCaptha[
-        Math.floor(Math.random() * somekindLikeCaptha.length - 1)
-      ];
+    const confirmKey = getGibberishWord();
 
     if (chatRoom) {
       const confirmDelete = prompt(

@@ -14,8 +14,11 @@
 
 .login img.illustration-image {
   object-fit: contain;
-  width: 230px;
-  height: 230px;
+  /* width: 40vw; */
+  height: 30vh;
+  max-height: 250px;
+  /* min-height: 200px;
+  max-width: 600px; */
 }
 
 .login p {
