@@ -15,9 +15,9 @@ const ChatRoomOption = ({ createRoom, roomId, room }) => {
 
   const createNewRoom = () => {
     const roomName = prompt("Set room name:");
-    const roomPassword = prompt("Set room password:");
+    // const roomPassword = prompt("Set room password:");
 
-    if (roomName && roomPassword) {
+    if (roomName) {
       // background avatar colors
       const setBgColor = getRandomColor();
       const _roomName = roomName.toUpperCase().split(" ");
@@ -29,7 +29,7 @@ const ChatRoomOption = ({ createRoom, roomId, room }) => {
       db.collection("rooms")
         .add({
           name: roomName,
-          password: roomPassword,
+          password: "12345",
           photoURL,
           created: {
             email: user.email,
@@ -44,27 +44,6 @@ const ChatRoomOption = ({ createRoom, roomId, room }) => {
     }
   };
 
-  const enterRoom = () => {
-    // check if user has access to that room before
-    if (accessRoomId !== roomId) {
-      const _roomPassword = prompt("Enter room password:");
-      if (room.password !== _roomPassword) {
-        alert("Room password incorrect!");
-        return false;
-      }
-    }
-    setRoomAccessAndRedirect();
-  };
-
-  const setRoomAccessAndRedirect = () => {
-    dispatch({
-      type: "SET_ACCESSROOMID",
-      accessRoomId: roomId,
-    });
-
-    history.push(`/rooms/${roomId}`);
-  };
-
   return (
     <div className="chatRoomOption">
       {createRoom ? (
@@ -77,7 +56,7 @@ const ChatRoomOption = ({ createRoom, roomId, room }) => {
           </div>
         </div>
       ) : (
-        <div onClick={enterRoom}>
+        <div onClick={() => history.push(`/rooms/${roomId}`)}>
           <Avatar src={room.photoURL} />
           <div className="chatRoomOption__info">
             <h3>{room.name}</h3>
