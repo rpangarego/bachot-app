@@ -8,14 +8,14 @@
 }
 
 .login > img {
-  max-width: 250px;
+  max-width: 220px;
   margin-bottom: 2.5rem;
 }
 
 .login img.illustration-image {
   object-fit: contain;
   /* width: 40vw; */
-  height: 30vh;
+  height: 26vh;
   max-height: 250px;
   /* min-height: 200px;
   max-width: 600px; */
@@ -23,7 +23,7 @@
 
 .login p {
   font-weight: 300;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--font-color);
   margin-bottom: 2rem;
 }
