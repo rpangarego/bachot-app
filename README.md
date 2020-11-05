@@ -1,7 +1,7 @@
-# Bachot App with ReactJS and Firebase (v1.2)
+# Bachot App with ReactJS and Firebase (v1.1)
 This is a chat app. I build this app with ReactJS as the Frontend side and Firebase as the Backend and database also.
 
-Note: Bachot-app (v1.2) is the protected room version which mean: when user try to enter/join that room, user have to enter room password. Beside this feature it's just the same app.
+Note: Bachot-app (v1.1) is the protected room version which mean: when user try to enter/join that room, user have to enter room password. Beside this feature it's just the same app.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
