@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./Chat.css";
 import Header from "../parts/Header";
 import Message from "../parts/Message";
@@ -11,16 +11,10 @@ import { useDataLayerValue } from "../DataLayer";
 
 const Chat = () => {
   // eslint-disable-next-line no-unused-vars
-  const history = useHistory();
-  // eslint-disable-next-line no-unused-vars
   const [{ user, accessRoomId }, dispatch] = useDataLayerValue();
 
   // auto scroll to bottom
   const messagesEndRef = useRef(null);
-  const scrollToBottom = () => {
-    messagesEndRef.current.scrollIntoView();
-  };
-  useEffect(scrollToBottom, []);
 
   // messages state
   const [inputMessage, setInputMessage] = useState("");
@@ -56,6 +50,14 @@ const Chat = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // const scrollToBottom = () => {
+  //   messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+  // };
+  useEffect(
+    () => messagesEndRef.current.scrollIntoView({ behavior: "smooth" }),
+    [messages]
+  );
 
   const sendMessage = (e) => {
     e.preventDefault();
@@ -96,8 +98,8 @@ const Chat = () => {
         ) : (
           <h5>Tips: double tap message to delete it.</h5>
         )}
+        <div ref={messagesEndRef}></div>
       </div>
-      <div ref={messagesEndRef}></div>
 
       {/* chat form */}
       <div className="chat__form">

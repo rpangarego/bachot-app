@@ -36,8 +36,9 @@
   margin-top: 10px;
 }
 
-.chat__body > .message:last-child {
+.chat__body > div:last-child {
   margin-bottom: 70px;
+  background-color: red;
 }
 
 .chat__form {
