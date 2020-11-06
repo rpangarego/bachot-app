@@ -29,6 +29,7 @@ a {
 @media screen and (max-width: 460px) {
   .app {
     height: 100vh;
+    max-height: 840px;
     border: none;
     border-radius: 0;
     box-shadow: none;
